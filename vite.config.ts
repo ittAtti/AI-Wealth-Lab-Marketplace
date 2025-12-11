@@ -8,9 +8,8 @@ export default defineConfig({
     sourcemap: true,
     emptyOutDir: true
   },
-  // This is critical for fixing the blank page. 
-  // It replaces 'process.env.API_KEY' in your code with the actual key string during the build.
   define: {
+    // Inject the API Key provided by the user directly into the build
     'process.env.API_KEY': JSON.stringify("AIzaSyDgQrx9QocUIaBWfikNSgMbElkEc2avrZo")
   }
 });
