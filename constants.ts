@@ -48,6 +48,15 @@ export const AGENTS: AiAgent[] = [
     description: 'Builds printable worksheets, planners, and business forms.',
     color: 'orange',
     icon: 'LayoutTemplate'
+  },
+  {
+    id: 'agent-6',
+    name: 'PixelCrafter AI',
+    role: 'Cover Designer',
+    type: 'design',
+    description: 'Generates professional, high-conversion product covers and thumbnails.',
+    color: 'pink',
+    icon: 'Palette'
   }
 ];
 

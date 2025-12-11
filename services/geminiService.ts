@@ -18,6 +18,8 @@ const getSystemInstruction = (agentType: ProductType): string => {
       return "You are PromptMaster AI, an expert prompt engineer. You craft high-fidelity prompts for LLMs and Image Generators.";
     case 'template':
       return "You are CanvasPro AI, a productivity expert. You design structured templates for business and personal organization.";
+    case 'design':
+      return "You are PixelCrafter AI, a professional graphic designer specializing in digital product covers.";
     default:
       return "You are a helpful digital product assistant.";
   }
@@ -126,6 +128,50 @@ export const generateBlogPost = async (topic: string) => {
     throw new Error("No text returned");
   } catch (error) {
     console.error(error);
+    throw error;
+  }
+};
+
+export const generateCoverImage = async (topic: string, style: string) => {
+  if (!apiKey) {
+    // Return a random picsum image if no key provided
+    return `https://picsum.photos/seed/${Date.now()}/1024/1024`;
+  }
+
+  const model = "gemini-2.5-flash-image";
+  
+  // Best practices included in the prompt construction
+  const fullPrompt = `
+    Create a professional digital product cover image.
+    Subject/Title Context: ${topic}
+    Visual Style: ${style}
+    
+    Design Guidelines:
+    - High contrast, professional lighting.
+    - Minimal text, focus on visual impact.
+    - Emerald and neon accents if appropriate for the style, matching a 'Wealth Lab' tech aesthetic.
+    - 1:1 Aspect Ratio composition.
+    - Photorealistic or High-End 3D Render quality.
+  `;
+
+  try {
+    const response = await ai.models.generateContent({
+      model: model,
+      contents: fullPrompt,
+      config: {
+         // No responseMimeType for image models in this SDK version usually, output is handled via parts
+      }
+    });
+
+    for (const part of response.candidates?.[0]?.content?.parts || []) {
+      if (part.inlineData) {
+        const base64String = part.inlineData.data;
+        return `data:image/png;base64,${base64String}`;
+      }
+    }
+    throw new Error("No image data returned");
+  } catch (error) {
+    console.error("Cover Generation Error:", error);
     throw error;
   }
 };

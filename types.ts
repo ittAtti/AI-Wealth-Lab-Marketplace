@@ -1,4 +1,4 @@
-export type ProductType = 'ebook' | 'template' | 'marketing' | 'automation' | 'prompt_pack';
+export type ProductType = 'ebook' | 'template' | 'marketing' | 'automation' | 'prompt_pack' | 'design';
 
 export interface Product {
   id: string;
