@@ -1,5 +1,12 @@
 export type ProductType = 'ebook' | 'template' | 'marketing' | 'automation' | 'prompt_pack' | 'design';
 
+export interface SeoMetadata {
+  title: string;
+  description: string;
+  altText: string;
+  keywords?: string[];
+}
+
 export interface Product {
   id: string;
   title: string;
@@ -14,6 +21,7 @@ export interface Product {
   features: string[];
   toc?: string[]; // Table of Contents for E-books
   dateAdded: string;
+  seo?: SeoMetadata;
 }
 
 export interface CartItem extends Product {

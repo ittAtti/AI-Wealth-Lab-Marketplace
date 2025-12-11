@@ -1,20 +1,56 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useStore } from '../context/StoreContext';
 import { Check, ShieldCheck, ShoppingCart, Star, Zap, ArrowLeft, Download, CreditCard } from 'lucide-react';
-import { STRIPE_PAYMENT_LINK } from '../constants';
+import { STRIPE_PAYMENT_LINK, APP_NAME } from '../constants';
 
 const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { products, addToCart } = useStore();
   const product = products.find(p => p.id === id);
 
+  useEffect(() => {
+    if (product?.seo?.title) {
+      document.title = product.seo.title;
+    } else if (product) {
+      document.title = `${product.title} | ${APP_NAME}`;
+    }
+  }, [product]);
+
   if (!product) {
     return <div className="p-20 text-center text-white">Product not found</div>;
   }
 
+  // Schema Markup (JSON-LD)
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": product.title,
+    "image": product.image,
+    "description": product.seo?.description || product.description,
+    "sku": product.id,
+    "offers": {
+      "@type": "Offer",
+      "url": window.location.href,
+      "priceCurrency": "USD",
+      "price": product.price.toString(),
+      "availability": "https://schema.org/InStock"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": product.rating.toString(),
+      "reviewCount": product.reviews.toString()
+    }
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      {/* Inject Schema */}
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} 
+      />
+
       <Link to="/store" className="inline-flex items-center text-slate-400 hover:text-white mb-8 transition-colors">
         <ArrowLeft size={18} className="mr-2" /> Back to Store
       </Link>
@@ -25,7 +61,7 @@ const ProductDetail: React.FC = () => {
           <div className="aspect-square bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 relative group">
             <img 
               src={product.image} 
-              alt={product.title} 
+              alt={product.seo?.altText || product.title} 
               className="w-full h-full object-cover" 
             />
             {product.isAiGenerated && (
@@ -59,7 +95,7 @@ const ProductDetail: React.FC = () => {
 
           <div className="bg-slate-900/50 p-6 rounded-xl border border-slate-800 mb-8">
             <p className="text-slate-300 leading-relaxed text-lg">
-              {product.description}
+              {product.seo?.description || product.description}
             </p>
           </div>
 

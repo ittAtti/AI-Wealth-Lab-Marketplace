@@ -132,7 +132,7 @@ export const generateBlogPost = async (topic: string) => {
   }
 };
 
-export const generateCoverImage = async (topic: string, style: string) => {
+export const generateCoverImage = async (topic: string, style: string, colorTheme: string) => {
   if (!apiKey) {
     // Return a random picsum image if no key provided
     return `https://picsum.photos/seed/${Date.now()}/1024/1024`;
@@ -140,18 +140,22 @@ export const generateCoverImage = async (topic: string, style: string) => {
 
   const model = "gemini-2.5-flash-image";
   
-  // Best practices included in the prompt construction
+  // Best practices for cover generation:
+  // - Clear composition for thumbnails
+  // - High contrast
+  // - Specific lighting and resolution keywords
   const fullPrompt = `
     Create a professional digital product cover image.
     Subject/Title Context: ${topic}
     Visual Style: ${style}
+    Color Palette: ${colorTheme}
     
     Design Guidelines:
-    - High contrast, professional lighting.
-    - Minimal text, focus on visual impact.
-    - Emerald and neon accents if appropriate for the style, matching a 'Wealth Lab' tech aesthetic.
+    - High contrast, professional cinematic lighting.
+    - Minimal text, focus on visual impact and clear typography if text is generated.
     - 1:1 Aspect Ratio composition.
-    - Photorealistic or High-End 3D Render quality.
+    - Quality Keywords: Ultra-sharp detail, premium cover design, soft shadows, elegant typography, 4k resolution visuals, photorealistic or high-end 3D render.
+    - If the style is 'tech', use abstract data visuals, glowing nodes, or digital waveforms.
   `;
 
   try {

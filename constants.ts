@@ -73,7 +73,12 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.8,
     reviews: 124,
     features: ['50+ Pages', 'Tool List', 'Action Plan'],
-    dateAdded: '2023-10-15'
+    dateAdded: '2023-10-15',
+    seo: {
+      title: 'The Solopreneur AI Scaling Guide PDF — AI Tools for Solo Businesses | AI Wealth Lab',
+      description: 'Download “The Solopreneur AI Scaling Guide” — a 50-page comprehensive guide to scaling your one-person business with AI tools. Includes strategies, workflows, and step-by-step tactics.',
+      altText: 'Professional ebook cover featuring AI business scaling theme with dark background and emerald accents titled The Solopreneur AI Scaling Guide'
+    }
   },
   {
     id: 'prod-2',
@@ -86,7 +91,12 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.9,
     reviews: 89,
     features: ['Email Sequences', 'Ad Copy', 'Canva Links'],
-    dateAdded: '2023-10-18'
+    dateAdded: '2023-10-18',
+    seo: {
+      title: 'Ultimate SaaS Marketing Kit PDF — Email + Social + Ad Templates | AI Wealth Lab',
+      description: 'Grow your SaaS with the Ultimate SaaS Marketing Kit — complete set of email templates, social media posts, and ad copy designed for SaaS product launches.',
+      altText: 'Marketing kit cover with email, social, and SaaS icons titled Ultimate SaaS Marketing Kit PDF'
+    }
   },
   {
     id: 'prod-3',
@@ -100,7 +110,12 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.7,
     reviews: 210,
     features: ['1000+ Prompts', 'Style Guide', 'Parameter Cheat Sheet'],
-    dateAdded: '2023-11-01'
+    dateAdded: '2023-11-01',
+    seo: {
+      title: 'MidJourney V6 Master Prompts PDF — 1000+ AI Image Prompts | AI Wealth Lab',
+      description: 'Get the MidJourney V6 Master Prompts PDF — over 1000 high-fidelity prompts for photorealistic AI image generation. Perfect for creators, designers, and AI enthusiasts.',
+      altText: 'Futuristic AI prompt book cover with neural network graphics titled MidJourney V6 Master Prompts'
+    }
   },
   {
     id: 'prod-4',
@@ -113,7 +128,12 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.6,
     reviews: 55,
     features: ['Dashboard', 'CRM', 'Finance Tracker'],
-    dateAdded: '2023-11-05'
+    dateAdded: '2023-11-05',
+    seo: {
+      title: 'Notion Business OS Template PDF — Project, CRM & Finance | AI Wealth Lab',
+      description: 'Boost productivity with the Notion Business OS Template — all-in-one workspace for managing projects, CRM, finances, and operations.',
+      altText: 'Clean business template cover with workspace icons titled Notion Business OS Template'
+    }
   },
   {
     id: 'prod-5',
@@ -127,7 +147,12 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.9,
     reviews: 32,
     features: ['Flowcharts', 'Zapier Setup', 'Copy Templates'],
-    dateAdded: '2023-11-10'
+    dateAdded: '2023-11-10',
+    seo: {
+      title: 'Automated Email Funnel Blueprint PDF — Sales Funnel SOPs',
+      description: 'Visual flowchart and SOPs for setting up a 7-figure email funnel. Automate your sales process today.',
+      altText: 'Blueprint diagram for automated email marketing funnels'
+    }
   },
   {
     id: 'prod-6',
@@ -141,7 +166,12 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.5,
     reviews: 40,
     features: ['Content Calendar', 'Reels Guide', 'Hashtag Sets'],
-    dateAdded: '2023-11-12'
+    dateAdded: '2023-11-12',
+     seo: {
+      title: 'Instagram Growth 2024 Strategy PDF — 100k Followers Guide',
+      description: 'Data-backed strategy for growing to 100k followers in 6 months. Includes content calendars and reel guides.',
+      altText: 'Modern cover design for Instagram Growth Strategy ebook'
+    }
   },
    {
     id: 'prod-7',
@@ -154,7 +184,12 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.8,
     reviews: 110,
     features: ['MSA', 'SOW', 'NDA'],
-    dateAdded: '2023-11-15'
+    dateAdded: '2023-11-15',
+     seo: {
+      title: 'Freelance Contract Templates — MSA, SOW, NDA Legal Forms',
+      description: 'Bulletproof legal contracts for designers, developers, and writers. Protect your freelance business.',
+      altText: 'Professional legal document binder cover for freelance contracts'
+    }
   },
   {
     id: 'prod-8',
@@ -168,7 +203,12 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.7,
     reviews: 15,
     features: ['Python Code', 'Backtesting Data', 'Strategy PDF'],
-    dateAdded: '2023-11-20'
+    dateAdded: '2023-11-20',
+     seo: {
+      title: 'Crypto Trading Bot Logic — Python Algo Trading Scripts',
+      description: 'Python scripts and logic flow for algorithmic trading. Includes backtesting data and strategy PDF.',
+      altText: 'Digital tech abstract cover for crypto trading bot algorithms'
+    }
   }
 ];
 

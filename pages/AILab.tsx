@@ -15,7 +15,8 @@ const AILab: React.FC = () => {
   const [generatedResult, setGeneratedResult] = useState<Partial<Product> | null>(null);
 
   // Image Gen State
-  const [imageStyle, setImageStyle] = useState('Modern Tech, Dark Mode, Neon Accents');
+  const [imageStyle, setImageStyle] = useState('Modern Tech, Cinematic Lighting');
+  const [colorTheme, setColorTheme] = useState('Emerald and Neon');
   const [generatedImage, setGeneratedImage] = useState<string | null>(null);
 
   const [isGenerating, setIsGenerating] = useState(false);
@@ -33,7 +34,7 @@ const AILab: React.FC = () => {
     try {
       if (selectedAgent.type === 'design') {
         // Image Generation Flow
-        const imageUrl = await generateCoverImage(topic, imageStyle);
+        const imageUrl = await generateCoverImage(topic, imageStyle, colorTheme);
         setGeneratedImage(imageUrl);
       } else {
         // Text/Product Concept Flow
@@ -154,18 +155,33 @@ const AILab: React.FC = () => {
                             className="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-all"
                           />
                         </div>
-                        <div>
-                          <label className="block text-sm font-medium text-slate-300 mb-2">
-                            Visual Style & Mood
-                          </label>
-                          <input 
-                            type="text"
-                            required
-                            value={imageStyle}
-                            onChange={(e) => setImageStyle(e.target.value)}
-                            placeholder="e.g., 'Minimalist, Emerald Green, Tech Futuristic'"
-                            className="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-all"
-                          />
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div>
+                            <label className="block text-sm font-medium text-slate-300 mb-2">
+                              Visual Style & Mood
+                            </label>
+                            <input 
+                              type="text"
+                              required
+                              value={imageStyle}
+                              onChange={(e) => setImageStyle(e.target.value)}
+                              placeholder="e.g., 'Modern Tech, Minimalist'"
+                              className="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-all"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-sm font-medium text-slate-300 mb-2">
+                              Color Theme
+                            </label>
+                            <input 
+                              type="text"
+                              required
+                              value={colorTheme}
+                              onChange={(e) => setColorTheme(e.target.value)}
+                              placeholder="e.g., 'Emerald & Neon', 'Black & Gold'"
+                              className="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-all"
+                            />
+                          </div>
                         </div>
                       </>
                     ) : (
